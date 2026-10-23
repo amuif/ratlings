@@ -1,6 +1,13 @@
 # Don't edit the `bin` list manually. Run `rustlings dev update` after changing
 # exercises or solutions.
-bin = []
+bin = [
+  { name = "snake_arena", path = "exercises/snake/snake_arena.rs" },
+  { name = "snake_arena_sol", path = "solutions/snake/snake_arena.rs" },
+  { name = "snake_style", path = "exercises/snake/snake_style.rs" },
+  { name = "snake_style_sol", path = "solutions/snake/snake_style.rs" },
+  { name = "snake_layout", path = "exercises/snake/snake_layout.rs" },
+  { name = "snake_layout_sol", path = "solutions/snake/snake_layout.rs" },
+]
 
 [package]
 name = "ratlings"

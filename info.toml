@@ -3,20 +3,78 @@ format_version = 1
 welcome_message = """
 Welcome to Ratlings! 🐀
 
-These small exercises teach Ratatui one concept at a time. Run `rustlings`
-and follow the compiler feedback. Use `h` for a hint when you get stuck.
+Here is what you will build, a Snake game in your terminal:
+
+  ┌ Snake — Score: 3 ──────────────────────┐
+  │                                        │
+  │     oooooo@  ───────▶          *       │
+  │                                        │
+  └────────────────────────────────────────┘
+    @ head    o body    * apple
+
+Play it before you start (steer with h j k l or the arrow keys):
+
+    cargo run --example preview
+
+You will build it in small steps, one Ratatui concept at a time:
+
+  1. snake_arena   draw the arena with a `Block`
+  2. snake_style   color the snake and apple with `Style`
+  3. snake_layout  arrange the screen with `Layout`
+
+Follow the compiler feedback, and press `h` for a hint when you get stuck.
 """
 
 final_message = """
-You finished Ratlings! 🎉
+  *  🎉  +  •  🎊  *  •  +  🎉  *
+
+  Congratulations! You have finished the Ratlings Snake game!
+
+  You drew the arena, styled the snake and the apple, and laid out
+  the whole game screen with Ratatui.
+
+  Celebrate with some confetti:
+
+      cargo run --example finale
+
+  *  🎉  +  •  🎊  *  •  +  🎉  *
 """
 
-exercises = []
+[[exercises]]
+name = "snake_arena"
+dir = "snake"
+hint = """
+Construct a bordered block using `Block::bordered()`, then chain:
+- `.title(format!(" Snake — Score: {score} "))`
+- `.title_top(Line::from(format!(" Length: {length} ")).right_aligned())`
+- `.border_style(Style::new().fg(Color::Cyan))`
+Finally, render it using `block.render(area, buf)`.
 
-# Add exercise metadata here. See CONTRIBUTING.md and the Rustlings community
-# exercises guide: https://rustlings.rust-lang.org/community-exercises/
-#
-# [[exercises]]
-# name = "example"
-# dir = "section"
-# hint = "A helpful hint."
+Official Block documentation:
+https://docs.rs/ratatui/latest/ratatui/widgets/block/struct.Block.html
+"""
+
+[[exercises]]
+name = "snake_style"
+dir = "snake"
+hint = """
+Match on the `SnakePart` variant:
+- SnakePart::Head => ('@', Style::default().fg(Color::LightGreen).add_modifier(Modifier::BOLD))
+- SnakePart::Body => ('o', Style::default().fg(Color::Green))
+- SnakePart::Apple =>('*', Style::default().fg(Color::Red).add_modifier(Modifier::BOLD))
+
+Official Style documentation:
+https://docs.rs/ratatui/latest/ratatui/style/struct.Style.html
+"""
+
+[[exercises]]
+name = "snake_layout"
+dir = "snake"
+hint = """
+Use `Layout::vertical(...)` with an array of three constraints:
+`[Constraint::Length(3), Constraint::Min(0), Constraint::Length(4)]`.
+Call `.split(area)` to get a slice of three `Rect`s, and map them to `GameLayout`.
+
+Official Layout documentation:
+https://docs.rs/ratatui/latest/ratatui/layout/struct.Layout.html
+"""
