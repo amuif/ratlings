@@ -5,10 +5,9 @@ Welcome to Ratlings! 🐀
 
 These small exercises teach Ratatui one concept at a time:
 
-  1. widgets         render built-in widgets like `Block`, `Paragraph` and `List`
-  2. styling         color and emphasize text with `Style`, `Span` and `Line`
-  3. layout          split the screen into areas with `Layout` and `Constraint`
-  4. custom widgets  build your own widgets by implementing `Widget`
+  1. styling         color and emphasize text with `Style`, `Span` and `Line`
+  2. layout          nest layouts to split the screen into areas
+  3. custom widgets  build your own widgets by implementing `Widget`
 
 Run `rustlings` and follow the compiler feedback. Use `h` for a hint when you
 get stuck.
@@ -17,58 +16,15 @@ get stuck.
 final_message = """
 You finished Ratlings! 🎉
 
-You rendered built-in widgets, styled text, laid out a screen and built your
-own widgets. Ready for a full app? Check out the tutorials and templates at
-https://ratatui.rs
-"""
-
-# widgets
-
-[[exercises]]
-name = "block"
-dir = "01_widgets"
-hint = """
-Start with `Block::bordered()` and chain:
-- `.border_type(BorderType::Rounded)`
-- `.title(" Inbox ")`
-- `.title_bottom(Line::from(" 3 unread ").right_aligned())`
-Then call `.render(area, buf)` on the block.
-
-https://docs.rs/ratatui/latest/ratatui/widgets/struct.Block.html
-"""
-
-[[exercises]]
-name = "paragraph"
-dir = "01_widgets"
-hint = """
-Create the widget with `Paragraph::new(text)` and chain:
-- `.block(Block::bordered().title(" Message "))`
-- `.wrap(Wrap { trim: true })`
-- `.centered()`
-Then call `.render(area, buf)` on the paragraph.
-
-https://docs.rs/ratatui/latest/ratatui/widgets/struct.Paragraph.html
-"""
-
-[[exercises]]
-name = "list"
-dir = "01_widgets"
-hint = """
-`List::new` accepts any iterator of items, for example `items.iter().copied()`.
-Set `.highlight_symbol("> ")` and `.highlight_style(...)` on the list.
-
-A `List` is a `StatefulWidget`: which item is selected lives in a separate
-`ListState`. Create one with `ListState::default().with_selected(Some(selected))`
-and render with `StatefulWidget::render(list, area, buf, &mut state)`.
-
-https://docs.rs/ratatui/latest/ratatui/widgets/struct.List.html
+You styled text, laid out a screen and built your own widgets. Ready for a
+full app? Check out the tutorials and templates at https://ratatui.rs
 """
 
 # styling
 
 [[exercises]]
 name = "style"
-dir = "02_styling"
+dir = "01_styling"
 hint = """
 Start every style with `Style::new()` and chain:
 - `.fg(Color::...)` for the text color
@@ -80,7 +36,7 @@ https://docs.rs/ratatui/latest/ratatui/style/struct.Style.html
 
 [[exercises]]
 name = "styled_text"
-dir = "02_styling"
+dir = "01_styling"
 hint = """
 The `Stylize` trait adds shorthand methods to strings and spans, so
 `"online".green().bold()` is a `Span` with a green, bold style.
@@ -95,19 +51,8 @@ https://docs.rs/ratatui/latest/ratatui/text/struct.Line.html
 # layout
 
 [[exercises]]
-name = "layout"
-dir = "03_layout"
-hint = """
-Use `Layout::vertical` with three constraints:
-`[Constraint::Length(1), Constraint::Fill(1), Constraint::Length(1)]`.
-`.areas(area)` returns an array of `Rect`s, one per constraint.
-
-https://docs.rs/ratatui/latest/ratatui/layout/struct.Layout.html
-"""
-
-[[exercises]]
 name = "nested_layout"
-dir = "03_layout"
+dir = "02_layout"
 hint = """
 Split in two steps:
 1. `Layout::vertical([Constraint::Length(3), Constraint::Fill(1)])` gives the
@@ -124,7 +69,7 @@ https://docs.rs/ratatui/latest/ratatui/layout/enum.Constraint.html
 
 [[exercises]]
 name = "custom_widget"
-dir = "04_custom_widgets"
+dir = "03_custom_widgets"
 hint = """
 Loop over the columns with `for x in area.left()..area.right()`.
 `buf[(x, area.top())]` gives you a mutable `Cell`, and you can chain
@@ -138,7 +83,7 @@ https://docs.rs/ratatui/latest/ratatui/buffer/struct.Cell.html
 
 [[exercises]]
 name = "widget_ref"
-dir = "04_custom_widgets"
+dir = "03_custom_widgets"
 hint = """
 Inside `render`, `self` is a `&UserCard`, so borrow its fields with
 `self.role.as_str()` instead of moving them.
