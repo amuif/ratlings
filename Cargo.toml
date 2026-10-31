@@ -1,12 +1,24 @@
 # Don't edit the `bin` list manually. Run `rustlings dev update` after changing
 # exercises or solutions.
 bin = [
-  { name = "snake_arena", path = "exercises/snake/snake_arena.rs" },
-  { name = "snake_arena_sol", path = "solutions/snake/snake_arena.rs" },
-  { name = "snake_style", path = "exercises/snake/snake_style.rs" },
-  { name = "snake_style_sol", path = "solutions/snake/snake_style.rs" },
-  { name = "snake_layout", path = "exercises/snake/snake_layout.rs" },
-  { name = "snake_layout_sol", path = "solutions/snake/snake_layout.rs" },
+  { name = "block", path = "exercises/01_widgets/block.rs" },
+  { name = "block_sol", path = "solutions/01_widgets/block.rs" },
+  { name = "paragraph", path = "exercises/01_widgets/paragraph.rs" },
+  { name = "paragraph_sol", path = "solutions/01_widgets/paragraph.rs" },
+  { name = "list", path = "exercises/01_widgets/list.rs" },
+  { name = "list_sol", path = "solutions/01_widgets/list.rs" },
+  { name = "style", path = "exercises/02_styling/style.rs" },
+  { name = "style_sol", path = "solutions/02_styling/style.rs" },
+  { name = "styled_text", path = "exercises/02_styling/styled_text.rs" },
+  { name = "styled_text_sol", path = "solutions/02_styling/styled_text.rs" },
+  { name = "layout", path = "exercises/03_layout/layout.rs" },
+  { name = "layout_sol", path = "solutions/03_layout/layout.rs" },
+  { name = "nested_layout", path = "exercises/03_layout/nested_layout.rs" },
+  { name = "nested_layout_sol", path = "solutions/03_layout/nested_layout.rs" },
+  { name = "custom_widget", path = "exercises/04_custom_widgets/custom_widget.rs" },
+  { name = "custom_widget_sol", path = "solutions/04_custom_widgets/custom_widget.rs" },
+  { name = "widget_ref", path = "exercises/04_custom_widgets/widget_ref.rs" },
+  { name = "widget_ref_sol", path = "solutions/04_custom_widgets/widget_ref.rs" },
 ]
 
 [package]
